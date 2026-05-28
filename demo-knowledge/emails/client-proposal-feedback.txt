@@ -1,0 +1,48 @@
+From: laura.pons@clarabridge.com
+To: alex.montoya@montoyaconsulting.com
+Date: Friday, December 6, 2024 11:28
+Subject: Re: Revised proposal v2 — Clarabridge digital operations project
+
+Hi Alex,
+
+Thanks for the revised proposal — we've had a chance to review it internally and I'm happy to confirm that the revised scope and approach are accepted.
+
+A few comments and one important request:
+
+1. SCOPE: The reduced scope (Phase 1 only, with Phase 2 as a separate contract) makes sense given our budget situation for Q1. We're comfortable with that split.
+
+2. DELIVERABLES: The deliverable list on page 4 looks good. I'd suggest renaming D3 from "Final implementation guide" to "Technical handover documentation" to align with our internal terminology, but it's a minor point — not a blocker.
+
+3. PAYMENT TERMS — THIS IS THE KEY ONE: Our finance department has flagged that we need to move to Net-30 payment terms rather than the Net-14 you proposed. This is a company-wide policy that applies to all suppliers, so I'm afraid it's non-negotiable on our side. Can you update the proposal and contract with Net-30 on all invoices?
+
+4. SIGNING: Subject to the payment terms change, we're ready to sign. I'll route it to our Legal team on Monday for a quick review (they normally turn these around in 2–3 days). Can you send us a Word version so Legal can track changes if they have any minor edits?
+
+Overall — yes, we're on board. Looking forward to getting started.
+
+Best,
+Laura
+
+---
+
+Laura Pons
+Head of Digital Operations, Clarabridge EMEA
+laura.pons@clarabridge.com
++34 93 480 1122
+
+---
+
+From: alex.montoya@montoyaconsulting.com
+To: laura.pons@clarabridge.com
+Date: Wednesday, December 4, 2024 17:45
+Subject: Revised proposal v2 — Clarabridge digital operations project
+
+Laura,
+
+Please find attached the revised proposal (v2) incorporating the scope changes we discussed on the 28th. Key changes from v1:
+- Scope reduced to Phase 1 only (Phase 2 in a separate contract once Phase 1 is complete)
+- Budget reduced to €38,250 (from €45,000) reflecting the reduced scope
+- Timeline updated: start January 13, completion May 30, 2025
+
+Happy to discuss before the end of the week if you have questions.
+
+Alex

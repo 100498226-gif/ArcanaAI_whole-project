@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;padding:0;background:#080C1A}
+body{min-height:100vh;padding:28px;display:flex;flex-direction:column;gap:22px;font-family:var(--font-display);color:#fff}
+.bar{
+  position:relative;display:flex;align-items:center;gap:12px;
+  padding:16px 24px;border-radius:18px;
+  background:#0E1428;border:1px solid rgba(255,255,255,0.08);
+}
+.bar.focus{
+  border-color:rgba(0,255,136,0.5);
+  box-shadow:0 0 0 3px rgba(0,255,136,0.12), 0 0 40px rgba(0,255,136,0.35);
+}
+.star{width:20px;height:20px;flex-shrink:0;color:#00FF88;filter:drop-shadow(0 0 8px rgba(0,255,136,0.6))}
+.txt{flex:1;font-size:15px;color:rgba(255,255,255,0.95)}
+.ph{color:rgba(255,255,255,0.35)}
+.cta{padding:9px 22px;border-radius:999px;background:linear-gradient(135deg,#00BFA5 0%,#00FF88 100%);color:#001108;font:600 13px var(--font-display);border:none;cursor:pointer}
+.caret{display:inline-block;width:2px;height:18px;background:#00FF88;vertical-align:middle;margin-left:1px;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0}}
+</style></head><body>
+  <div class="bar">
+    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10Z"/></svg>
+    <div class="txt ph">Pregunta a Arcana cualquier cosa…</div>
+    <button class="cta">Ask</button>
+  </div>
+  <div class="bar focus">
+    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14 10L22 12L14 14L12 22L10 14L2 12L10 10Z"/></svg>
+    <div class="txt">¿Qué dicen los PRDs sobre el modo offline<span class="caret"></span></div>
+    <button class="cta">Ask</button>
+  </div>
+</body></html>

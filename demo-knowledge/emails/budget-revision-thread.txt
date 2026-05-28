@@ -1,0 +1,63 @@
+From: sara.diaz@horizonanalytics.com
+To: alex.montoya@montoyaconsulting.com; miguel.fernandez@horizonanalytics.com
+Date: Thursday, November 21, 2024 16:55
+Subject: Re: Budget revision — Project Clarabridge
+
+Hi both,
+
+Quick update: I've just got off a call with Neus (Clarabridge's CFO) and she has the revised numbers in front of her. She says it looks "directionally right" but CFO approval is still pending — she expects to have sign-off by end of next week (November 29 at the latest).
+
+So the position now is:
+
+AGREED:
+- Scope reduced by 15% vs. original proposal (confirmed, no change from what we discussed)
+- New total: €38,250 (down from €45,000)
+- Phase 2 moved to a separate future contract
+
+PENDING:
+- Formal CFO approval — expected by November 29
+- Legal review of updated contract — Clarabridge's Legal team will review once CFO signs off
+
+I'd say we're 90% there. Let's not count it as signed until we have written confirmation from Laura, but we can start preliminary prep work on the assumption it closes.
+
+Miguel — can you start the technical environment setup under the new scope? Just the foundation, don't commit to anything that would need reversing if it falls through.
+
+Alex — once CFO approves, you'll need to send the updated contract (Word format per Laura's request).
+
+I'll ping you both as soon as we hear from Neus.
+
+Sara
+
+---
+
+From: alex.montoya@montoyaconsulting.com
+To: sara.diaz@horizonanalytics.com; miguel.fernandez@horizonanalytics.com
+Date: Thursday, November 21, 2024 11:30
+Subject: Re: Budget revision — Project Clarabridge
+
+Sara, Miguel,
+
+To summarise where we landed after my call with Laura this morning:
+
+The scope has been cut by 15% — primarily the Phase 2 analytics module and one of the integration workstreams (Salesforce sync). The new total comes to €38,250.
+
+Laura said she would take it to her CFO today. She seemed confident but said the CFO needs to formally sign off given it's over €25k.
+
+Payment terms: they've confirmed Net-30 (non-negotiable, company policy). We'll need to update the contract.
+
+Miguel — does the 15% scope reduction affect your timeline estimate? Let me know if we need to update the delivery schedule.
+
+Alex
+
+---
+
+From: miguel.fernandez@horizonanalytics.com
+To: alex.montoya@montoyaconsulting.com; sara.diaz@horizonanalytics.com
+Date: Thursday, November 21, 2024 12:45
+Subject: Re: Budget revision — Project Clarabridge
+
+The scope reduction actually helps on timeline — removing the Salesforce integration saves us about 3 weeks. We should be able to hold the May 30 delivery date comfortably now, even with Christmas.
+
+Happy to start foundation setup once Sara confirms we're good to proceed.
+
+Miguel

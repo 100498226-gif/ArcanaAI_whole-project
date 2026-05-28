@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;padding:0;background:#FAFBFD}
+body{min-height:100vh;padding:28px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-family:var(--font-display);color:#0B1020}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 30px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.02em;border:1px solid rgba(11,16,32,0.1);background:#fff;color:#0B1020;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,#00BFA5 0%,#00FF88 100%);color:#001108;border-color:transparent;box-shadow:0 6px 16px rgba(0,191,165,0.28)}
+.btn.primary.active{box-shadow:0 12px 40px rgba(0,191,165,0.45)}
+.btn.ghost{background:transparent;border-color:rgba(11,16,32,0.15)}
+.btn.ghost.hover{border-color:#00BFA5;box-shadow:0 6px 20px rgba(0,191,165,0.22)}
+.col{display:flex;flex-direction:column;gap:8px;align-items:center}
+.lbl{font-size:10px;color:rgba(11,16,32,0.45);text-transform:uppercase;letter-spacing:.14em;font-weight:500}
+</style></head><body>
+  <div class="col"><button class="btn ghost">Clear</button><div class="lbl">rest</div></div>
+  <div class="col"><button class="btn ghost hover">Clear</button><div class="lbl">hover</div></div>
+  <div class="col"><button class="btn primary">Ask Arcana</button><div class="lbl">primary</div></div>
+  <div class="col"><button class="btn primary active">Ask Arcana</button><div class="lbl">active</div></div>
+</body></html>

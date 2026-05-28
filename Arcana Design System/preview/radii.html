@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;padding:0;background:#080C1A}
+body{min-height:100vh;padding:26px;display:flex;gap:18px;align-items:flex-end;font-family:var(--font-display);color:#fff}
+.sw{display:flex;flex-direction:column;align-items:center;gap:10px}
+.box{
+  width:90px;height:90px;background:#141C35;border:1px solid rgba(255,255,255,0.08);
+  position:relative;overflow:hidden;
+}
+.box::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(circle at 30% 30%, rgba(0,255,136,0.2), transparent 70%);
+}
+.label{font-size:11px;color:rgba(255,255,255,0.5);font-family:var(--font-mono)}
+.name{font-size:12px;font-weight:600}
+</style></head><body>
+  <div class="sw"><div class="box" style="border-radius:8px"></div><div class="name">sm</div><div class="label">8px</div></div>
+  <div class="sw"><div class="box" style="border-radius:14px"></div><div class="name">md</div><div class="label">14px</div></div>
+  <div class="sw"><div class="box" style="border-radius:20px"></div><div class="name">lg</div><div class="label">20px</div></div>
+  <div class="sw"><div class="box" style="border-radius:28px"></div><div class="name">xl</div><div class="label">28px</div></div>
+  <div class="sw"><div class="box" style="width:130px;border-radius:999px"></div><div class="name">pill</div><div class="label">999px</div></div>
+</body></html>

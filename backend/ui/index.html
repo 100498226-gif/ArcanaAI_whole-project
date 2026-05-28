@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Arcana MVP - Local UI</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 40px; }
+      #output { white-space: pre-wrap; border: 1px solid #ddd; padding: 1rem; min-height: 200px; }
+      .row { margin-bottom: 12px; }
+      label { margin-right: 8px; }
+      button { padding: 8px 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>Arcana MVP Local UI</h1>
+    <div class="row">
+      <label for="q">Question:</label>
+      <input id="q" type="text" style="width:60%" placeholder="Ask something about Notion or GitHub..." />
+    </div>
+    <div class="row">
+      <button id="ask">Preguntar</button>
+    </div>
+    <h3>Respuesta (stream):</h3>
+    <div id="output" aria-live="polite"></div>
+
+    <script>
+      const btn = document.getElementById('ask');
+      const input = document.getElementById('q');
+      const out = document.getElementById('output');
+      btn.addEventListener('click', async () => {
+        const question = input.value.trim();
+        if (!question) return;
+        out.textContent = '';
+        const body = { question: question, context_file: null, prefer_visual: false };
+        try {
+          const resp = await fetch('/query/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+          });
+          if (!resp.ok) {
+            out.textContent = `Error: ${resp.status} ${resp.statusText}`;
+            return;
+          }
+          const reader = resp.body.getReader();
+          const decoder = new TextDecoder();
+          let acc = '';
+          while (true) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            acc += decoder.decode(value, { stream: true });
+            // Try to parse JSON lines that come as SSE-like messages
+            // Each line is a JSON string with {event, data}
+            const lines = acc.split('\n');
+            acc = lines.pop();
+            for (const line of lines) {
+              if (!line.trim()) continue;
+              try {
+                const obj = JSON.parse(line);
+                if (obj.event === 'chunk') {
+                  const data = JSON.parse(obj.data);
+                  const t = data?.text ?? '';
+                  if (t) out.textContent += t;
+                }
+                // 'done' or 'error' can be handled if needed
+              } catch (_) {
+                // ignore non-JSON lines
+              }
+            }
+          }
+        } catch (err) {
+          out.textContent += '\nError while streaming: ' + String(err);
+        }
+      });
+    </script>
+  </body>
+  </html>

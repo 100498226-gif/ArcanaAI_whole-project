@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"\nimport sys, json\ndata = json.load(sys.stdin)\nif 'good morning' in data.get('prompt', '').lower():\n    with open('/Users/Ignacio/Desktop/Workspace/ig-arcana-simple/CONTEXT.md') as f:\n        content = f.read()\n    print(json.dumps({'hookSpecificOutput': {'hookEventName': 'UserPromptSubmit', 'additionalContext': 'CONTEXT.md (daily briefing):\\n' + content}}))\n\" 2>/dev/null || true",
+            "statusMessage": "Loading daily context..."
+          }
+        ]
+      }
+    ]
+  }
+}

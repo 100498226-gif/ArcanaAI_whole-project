@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;padding:0}
+body{min-height:100vh;display:flex;padding:0;font-family:var(--font-display)}
+.half{flex:1;display:flex;align-items:center;justify-content:center;padding:24px;position:relative;overflow:hidden}
+.half.dark{background:#080C1A;color:#fff}
+.half.light{background:#FAFBFD;color:#0B1020}
+.half.dark::before{
+  content:"";position:absolute;inset:-40px;
+  background:radial-gradient(ellipse 300px 200px at 30% 50%, rgba(0,255,136,0.35) 0%, rgba(0,191,165,0.18) 40%, transparent 70%);
+  filter:blur(20px);
+}
+.half.light::before{
+  content:"";position:absolute;inset:-40px;
+  background:radial-gradient(ellipse 320px 220px at 50% 50%, rgba(0,191,165,0.18) 0%, transparent 70%);
+}
+.card{position:relative;z-index:2;background:#141C35;border-radius:22px;padding:22px 28px;min-width:180px;border:1px solid rgba(255,255,255,0.06)}
+.light .card{background:#fff;box-shadow:0 12px 40px rgba(11,16,32,0.08);border-color:rgba(11,16,32,0.06)}
+.label{font-size:10px;color:#00FF88;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.light .label{color:#00BFA5}
+.num{font-size:38px;font-weight:800;letter-spacing:-0.015em;margin-top:2px}
+.delta{font-size:12px;color:#00FF88;margin-top:6px;font-weight:600}
+.light .delta{color:#00A88F}
+</style></head><body>
+  <div class="half dark"><div class="card">
+    <div class="label">Usuarios Activos</div>
+    <div class="num">12,847</div>
+    <div class="delta">↗ +14% este ciclo</div>
+  </div></div>
+  <div class="half light"><div class="card">
+    <div class="label">Ingresos</div>
+    <div class="num">$94.2K</div>
+    <div class="delta">↗ +23% este ciclo</div>
+  </div></div>
+</body></html>

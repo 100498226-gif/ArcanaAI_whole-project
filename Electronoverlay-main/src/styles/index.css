@@ -1,0 +1,10 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+.drag-region    { -webkit-app-region: drag; }
+.no-drag-region { -webkit-app-region: no-drag; }
+
+.mermaid-diagram { background: rgba(0,0,0,0.04); border-radius: 10px; padding: 1rem; margin: 0.5rem 0; overflow-x: auto; text-align: center; }
+.mermaid-diagram svg { max-width: 100%; height: auto; }
+.mermaid-error { background: rgba(239,68,68,0.08); border-radius: 8px; padding: 0.5rem; color: #dc2626; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; }

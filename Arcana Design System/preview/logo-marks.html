@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;padding:0}
+body{min-height:100vh;display:flex;padding:0}
+.half{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;gap:12px}
+.dark{background:var(--arcana-void)}
+.light{background:var(--arcana-horizon)}
+.half img{max-height:72px}
+.label{font:600 10px/1 var(--font-display);letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+.dark .label{color:#fff}
+.light .label{color:#0B1020}
+</style></head><body>
+  <div class="half dark"><img src="../assets/logo-mark-dark.png" alt=""><span class="label">A-Mark · Dark</span></div>
+  <div class="half light"><img src="../assets/logo-mark-light.png" alt=""><span class="label">A-Mark · Light</span></div>
+</body></html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+html,body{margin:0;padding:0;background:#080C1A;font-family:var(--font-display)}
+body{min-height:100vh;padding:22px}
+.row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.sw{height:180px;border-radius:22px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.teal{background:#00BFA5;color:#001108}
+.fluor{background:#00FF88;color:#001108}
+.grad{background:linear-gradient(135deg,#00BFA5 0%,#00FF88 100%);color:#001108}
+.sw::after{content:"";position:absolute;inset:0;border-radius:22px;
+  box-shadow:inset 0 0 60px rgba(255,255,255,0.18)}
+.name{font-weight:800;font-size:16px;z-index:2;position:relative}
+.role{font-size:11px;opacity:.85;letter-spacing:.06em;text-transform:uppercase;z-index:2;position:relative}
+.hex{font-family:var(--font-mono);font-size:12px;opacity:.9;z-index:2;position:relative}
+</style></head><body>
+  <div class="row">
+    <div class="sw teal"><div><div class="name">Teal · Turquesa</div><div class="role">primary accent</div></div><div class="hex">#00BFA5</div></div>
+    <div class="sw fluor"><div><div class="name">Verde Fluorescente</div><div class="role">hover · active only</div></div><div class="hex">#00FF88</div></div>
+    <div class="sw grad"><div><div class="name">Signature Gradient</div><div class="role">active pill buttons</div></div><div class="hex">teal → fluorescent</div></div>
+  </div>
+</body></html>

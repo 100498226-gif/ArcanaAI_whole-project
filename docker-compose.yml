@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  api:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data              # persist DB + ChromaDB across restarts
+      - ./backend/arcana:/app/arcana  # hot reload in dev
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:///./data/arcana.db
+      CHROMADB_PATH: /app/data/chromadb
+    command: uvicorn arcana.main:app --host 0.0.0.0 --port 8000 --reload
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  admin:
+    build: ./admin
+    ports:
+      - "127.0.0.1:8501:8501"   # localhost-only — do not expose to public networks
+    environment:
+      BACKEND_URL: http://api:8000
+      STREAMLIT_API_KEY: ${ADMIN_API_KEY:-}
+    depends_on:
+      api:
+        condition: service_healthy

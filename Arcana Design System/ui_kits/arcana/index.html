@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<title>Arcana — UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  /* ============================================================
+     Root + shell — everything is driven by [data-mode] on <html>
+     ============================================================ */
+  html, body { margin:0; padding:0; height:100%; overflow:hidden; }
+  html { transition: background 400ms ease; }
+  body {
+    font-family: var(--font-display);
+    color: var(--fg-1);
+    background: var(--bg-0);
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* Cosmic background layer (dark mode only) */
+  html[data-mode="dark"] body::before {
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 900px 600px at 15% 15%, rgba(0,191,165,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 700px 500px at 90% 90%, rgba(0,255,136,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 500px 400px at 85% 10%, rgba(127,255,223,0.05) 0%, transparent 55%);
+  }
+  /* Starfield */
+  html[data-mode="dark"] body::after {
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.5) 50%, transparent 50%),
+      radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.35) 50%, transparent 50%),
+      radial-gradient(1px 1px at 65% 20%, rgba(127,255,223,0.6) 50%, transparent 50%),
+      radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.3) 50%, transparent 50%),
+      radial-gradient(1px 1px at 10% 85%, rgba(0,255,136,0.5) 50%, transparent 50%),
+      radial-gradient(1px 1px at 55% 45%, rgba(255,255,255,0.25) 50%, transparent 50%);
+    background-size: 400px 400px;
+    opacity: 0.6;
+  }
+  html[data-mode="light"] body::before {
+    content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 900px 600px at 15% 15%, rgba(0,191,165,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse 700px 500px at 90% 90%, rgba(0,255,136,0.04) 0%, transparent 60%);
+  }
+
+  /* ============================================================
+     Layout
+     ============================================================ */
+  .app {
+    position:relative; z-index:1;
+    display:grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 64px 1fr;
+    height:100vh;
+  }
+
+  /* === Top bar === */
+  .topbar {
+    grid-column: 1 / 3;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 0 28px;
+    border-bottom: 1px solid var(--stroke-1);
+    background: var(--bg-0);
+  }
+  .topbar-left { display:flex; align-items:center; gap:20px; }
+  .brand { display:flex; align-items:center; gap:10px; }
+  .brand-mark {
+    width:32px; height:32px;
+    background: linear-gradient(135deg, #00BFA5 0%, #004B3F 100%);
+    border-radius: 10px 10px 10px 2px / 10px 10px 10px 2px;
+    clip-path: polygon(50% 0%, 100% 100%, 50% 85%, 0% 100%);
+    position: relative;
+    box-shadow: 0 0 16px rgba(0,255,136,0.35);
+  }
+  /* We can't do the A-shape easily without SVG; use a real SVG below */
+  .brand-svg { width:32px; height:32px; filter: drop-shadow(0 0 12px rgba(0,255,136,0.5)); }
+  html[data-mode="light"] .brand-svg { filter: drop-shadow(0 2px 8px rgba(0,191,165,0.35)); }
+  .brand-word {
+    font-family: var(--font-wordmark);
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--fg-1);
+  }
+  html[data-mode="dark"] .brand-word {
+    background: linear-gradient(180deg, #ffffff 0%, #7FFFDF 120%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+
+  .topbar-search {
+    flex:1; max-width: 420px; margin: 0 40px;
+    position:relative; display:flex; align-items:center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--bg-1);
+    border: 1px solid var(--stroke-1);
+    color: var(--fg-2);
+    font-size: 13px;
+  }
+  .topbar-search svg { width:14px; height:14px; margin-right:8px; opacity:.6; }
+  .topbar-search .kbd {
+    margin-left:auto;
+    font-family: var(--font-mono); font-size:11px;
+    padding: 2px 8px;
+    background: var(--bg-2); border-radius: 6px; color: var(--fg-3);
+  }
+
+  .topbar-right { display:flex; align-items:center; gap:14px; }
+
+  /* Mode toggle (top-right) */
+  .mode-toggle {
+    display:flex; align-items:center; gap:10px;
+    padding: 4px;
+    background: var(--bg-1);
+    border: 1px solid var(--stroke-1);
+    border-radius: 999px;
+  }
+  .mode-toggle button {
+    all:unset; cursor:pointer;
+    display:inline-flex; align-items:center; gap:6px;
+    padding: 7px 14px; border-radius: 999px;
+    font-size: 12px; font-weight: 600;
+    color: var(--fg-3);
+    transition: all 200ms ease;
+  }
+  .mode-toggle button.active {
+    background: linear-gradient(135deg, #00BFA5 0%, #00FF88 100%);
+    color: #001108;
+    box-shadow: 0 0 18px rgba(0,255,136,0.45);
+  }
+  .mode-toggle button .dot {
+    width:6px; height:6px; border-radius:50%;
+    background: currentColor;
+  }
+
+  .avatar {
+    width:32px; height:32px; border-radius:50%;
+    background: linear-gradient(135deg, #141C35, #1E2A4A);
+    border: 1px solid var(--stroke-2);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 12px; font-weight: 700; color: #7FFFDF;
+  }
+  html[data-mode="light"] .avatar {
+    background: linear-gradient(135deg, #EEF2F7, #FFFFFF);
+    color: #00BFA5;
+    border-color: var(--stroke-1);
+  }
+
+  /* === Sidebar === */
+  .side {
+    grid-column: 1 / 2;
+    padding: 24px 16px;
+    border-right: 1px solid var(--stroke-1);
+    background: var(--bg-0);
+    overflow-y:auto;
+  }
+  .side-section {
+    font-size: 10.5px; font-weight: 600; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--fg-3);
+    margin: 18px 12px 10px;
+  }
+  .side-item {
+    display:flex; align-items:center; gap:12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 13.5px; color: var(--fg-2); font-weight: 500;
+    cursor:pointer;
+    transition: all 180ms ease;
+  }
+  .side-item:hover {
+    background: var(--bg-1);
+    color: var(--fg-1);
+  }
+  .side-item.active {
+    background: var(--bg-1);
+    color: var(--fg-1);
+    box-shadow: inset 2px 0 0 var(--accent), 0 0 16px rgba(0,255,136,0.12);
+  }
+  html[data-mode="light"] .side-item.active {
+    box-shadow: inset 2px 0 0 var(--accent), 0 2px 8px rgba(0,191,165,0.08);
+  }
+  .side-item svg { width:16px; height:16px; opacity:.7; flex-shrink:0; }
+  .side-item.active svg { color: var(--accent); opacity:1; }
+  .side-item .count { margin-left:auto; font-size: 11px; color: var(--fg-3); font-family: var(--font-mono); }
+
+  .side-source {
+    display:flex; align-items:center; gap:10px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    color: var(--fg-2);
+  }
+  .side-source .src-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #00FF88;
+    box-shadow: 0 0 8px rgba(0,255,136,0.6);
+    flex-shrink: 0;
+  }
+  .side-source .src-dot.off { background: #FF5A6E; box-shadow: 0 0 8px rgba(255,90,110,0.5); }
+  .side-source .src-dot.idle { background: var(--fg-3); box-shadow:none; }
+
+  /* === Main content area === */
+  .main {
+    grid-column: 2 / 3;
+    overflow-y:auto;
+    padding: 48px 72px 80px;
+  }
+
+  /* Hero block */
+  .hero {
+    position:relative;
+    text-align:center;
+    padding: 60px 20px 40px;
+  }
+  .hero-eyebrow {
+    font-size: 11.5px; font-weight: 600;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 5.2vw, 72px);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    margin: 0 0 20px;
+    max-width: 900px; margin-left:auto; margin-right:auto;
+  }
+  html[data-mode="dark"] .hero h1 {
+    background: linear-gradient(180deg, #FFFFFF 0%, #7FFFDF 100%);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 40px rgba(0,255,136,0.22));
+  }
+  .hero-sub {
+    font-size: 17px; line-height: 1.55; color: var(--fg-2);
+    max-width: 560px; margin: 0 auto 30px;
+  }
+
+  /* === The hero query bar === */
+  .query-wrap {
+    max-width: 720px;
+    margin: 0 auto 40px;
+    position:relative;
+  }
+  .query-wrap::before {
+    content:""; position:absolute; inset: -30px;
+    background: radial-gradient(ellipse 700px 200px at 50% 50%, rgba(0,255,136,0.2) 0%, transparent 60%);
+    filter: blur(20px);
+    z-index: 0;
+    opacity: 0.6;
+    pointer-events:none;
+    transition: opacity 300ms ease;
+  }
+  .query-wrap.focused::before { opacity: 1; }
+  html[data-mode="light"] .query-wrap::before {
+    background: radial-gradient(ellipse 700px 180px at 50% 50%, rgba(0,191,165,0.14) 0%, transparent 60%);
+  }
+
+  .query {
+    position:relative; z-index:1;
+    display:flex; align-items:center; gap: 14px;
+    padding: 18px 18px 18px 26px;
+    background: var(--bg-1);
+    border: 1px solid var(--stroke-1);
+    border-radius: 22px;
+    transition: all 250ms ease;
+  }
+  .query.focused {
+    border-color: rgba(0,255,136,0.5);
+    box-shadow: 0 0 0 3px rgba(0,255,136,0.12), 0 20px 60px rgba(0,255,136,0.15);
+  }
+  html[data-mode="light"] .query {
+    box-shadow: 0 8px 30px rgba(11,16,32,0.06);
+  }
+  html[data-mode="light"] .query.focused {
+    border-color: rgba(0,191,165,0.6);
+    box-shadow: 0 0 0 3px rgba(0,191,165,0.12), 0 16px 40px rgba(0,191,165,0.22);
+  }
+  .query .star {
+    width:20px; height:20px; flex-shrink:0;
+    color: var(--accent);
+    filter: drop-shadow(0 0 8px rgba(0,255,136,0.6));
+  }
+  html[data-mode="light"] .query .star { filter: drop-shadow(0 1px 4px rgba(0,191,165,0.5)); }
+  .query input {
+    flex:1; all: unset;
+    font-family: var(--font-display);
+    font-size: 17px; color: var(--fg-1);
+    caret-color: var(--accent);
+  }
+  .query input::placeholder { color: var(--fg-3); }
+  .ask-btn {
+    padding: 13px 30px;            /* 13 × 30 — brand-critical */
+    border-radius: 999px;
+    background: linear-gradient(135deg, #00BFA5 0%, #00FF88 100%);
+    color: #001108; font-weight: 700; font-size: 14px;
+    border: none; cursor: pointer;
+    box-shadow: 0 0 18px rgba(0,255,136,0.4);
+    transition: all 200ms ease;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+  .ask-btn:hover { box-shadow: 0 0 36px rgba(0,255,136,0.75), 0 0 80px rgba(0,191,165,0.35); transform: translateY(-1px); }
+  .ask-btn:active { transform: translateY(0); }
+  .ask-btn:disabled { opacity: 0.5; cursor: wait; }
+
+  /* Suggestions under query */
+  .chips {
+    display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+    max-width: 720px; margin: 20px auto 0;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px; border-radius: 999px;
+    background: var(--bg-1); border: 1px solid var(--stroke-1);
+    font-size: 12.5px; color: var(--fg-2); font-weight: 500;
+    cursor: pointer;
+    transition: all 180ms ease;
+  }
+  .chip:hover {
+    border-color: var(--stroke-accent);
+    color: var(--fg-1);
+    box-shadow: 0 0 16px rgba(0,255,136,0.2);
+  }
+  .chip svg { width:12px; height:12px; opacity:.6; }
+
+  /* === Response area === */
+  .answer-wrap {
+    max-width: 880px; margin: 40px auto 0;
+    opacity: 0; transform: translateY(20px);
+    transition: all 400ms ease;
+    pointer-events: none;
+  }
+  .answer-wrap.visible { opacity: 1; transform: translateY(0); pointer-events:auto; }
+
+  .answer-card {
+    background: var(--bg-1);
+    border: 1px solid var(--stroke-1);
+    border-radius: 28px;
+    padding: 36px 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .answer-card::before {
+    content:""; position:absolute; top:-1px; left:-1px; right:-1px; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0,255,136,0.6), transparent);
+  }
+  .answer-meta {
+    display:flex; align-items:center; gap:12px;
+    font-size: 11.5px; color: var(--fg-3);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .answer-meta .pulse {
+    width: 6px; height: 6px; border-radius:50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(0,255,136,0.7);
+    animation: pulse-ring 1.6s cubic-bezier(0.45,0,0.55,1) infinite;
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(0,255,136,0.7); }
+    100% { box-shadow: 0 0 0 14px rgba(0,255,136,0); }
+  }
+  .answer-meta .dot { width:3px; height:3px; border-radius:50%; background: var(--fg-3); }
+
+  .answer-card h2 {
+    font-size: 26px; font-weight: 700; line-height: 1.25;
+    margin: 0 0 16px; letter-spacing: -0.01em;
+    color: var(--fg-1);
+  }
+  .answer-card p {
+    font-family: var(--font-body);
+    font-size: 15.5px; line-height: 1.7; color: var(--fg-2);
+    margin: 12px 0;
+  }
+  .answer-card code {
+    font-family: var(--font-mono); font-size: 0.9em;
+    background: var(--bg-2);
+    padding: 2px 8px; border-radius: 6px;
+    color: var(--accent);
+    border: 1px solid var(--stroke-1);
+  }
+  .citation {
+    display: inline-flex; align-items:center;
+    min-width: 20px; height: 20px; padding: 0 6px;
+    margin: 0 2px; vertical-align: 1px;
+    background: rgba(0,255,136,0.12);
+    border: 1px solid rgba(0,255,136,0.4);
+    color: var(--accent);
+    font-family: var(--font-mono); font-size: 10.5px; font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 180ms ease;
+  }
+  .citation:hover {
+    background: var(--accent); color: #001108;
+    box-shadow: 0 0 12px rgba(0,255,136,0.5);
+  }
+  html[data-mode="light"] .citation {
+    background: rgba(0,191,165,0.12); border-color: rgba(0,191,165,0.45); color: #00BFA5;
+  }
+  html[data-mode="light"] .citation:hover {
+    background: #00BFA5; color: #fff;
+  }
+
+  .sources {
+    margin-top: 28px; padding-top: 22px;
+    border-top: 1px solid var(--stroke-1);
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .sources-label { font-size: 10.5px; font-weight: 700; letter-spacing:.16em; text-transform:uppercase; color: var(--fg-3); margin-bottom: 4px; }
+  .source-row {
+    display:flex; align-items:center; gap:14px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: var(--bg-2);
+    border: 1px solid var(--stroke-1);
+    font-size: 13px;
+    transition: all 180ms ease;
+    cursor:pointer;
+  }
+  .source-row:hover { border-color: var(--stroke-accent); }
+  .source-row .sid {
+    min-width: 22px; height: 22px; padding: 0 6px; border-radius: 6px;
+    background: rgba(0,255,136,0.12); color: var(--accent);
+    font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+    display:inline-flex; align-items:center; justify-content:center;
+  }
+  html[data-mode="light"] .source-row .sid { background: rgba(0,191,165,0.12); color:#00BFA5; }
+  .source-row .stitle { font-weight: 600; color: var(--fg-1); flex:1; font-size: 13.5px; }
+  .source-row .smeta { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); }
+
+  /* === Metrics grid on empty state === */
+  .metrics {
+    max-width: 880px; margin: 60px auto 0;
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  }
+  .metric {
+    padding: 22px 24px;
+    background: var(--bg-1);
+    border: 1px solid var(--stroke-1);
+    border-radius: 22px;
+    position:relative;
+    overflow:hidden;
+  }
+  .metric::after {
+    content:""; position:absolute;
+    bottom:-40px; right:-40px; width:120px; height:120px;
+    background: radial-gradient(circle, rgba(0,255,136,0.25) 0%, transparent 65%);
+    filter: blur(20px);
+    pointer-events:none;
+  }
+  html[data-mode="light"] .metric { box-shadow: 0 8px 28px rgba(11,16,32,0.05); }
+  html[data-mode="light"] .metric::after {
+    background: radial-gradient(circle, rgba(0,191,165,0.2) 0%, transparent 65%);
+  }
+  .metric-label {
+    font-size: 10.5px; font-weight: 700; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 6px;
+  }
+  html[data-mode="light"] .metric-label { color: #00A88F; }
+  .metric-val { font-size: 30px; font-weight: 800; letter-spacing: -0.01em; color: var(--fg-1); }
+  .metric-delta { margin-top: 6px; font-size: 12px; color: var(--fg-3); font-weight: 500; }
+  .metric-delta.up { color: var(--accent); }
+  html[data-mode="light"] .metric-delta.up { color: #00A88F; }
+
+  /* === Streaming skeleton dots === */
+  .streaming .line { height: 16px; background: linear-gradient(90deg, var(--bg-2) 0%, var(--bg-3) 50%, var(--bg-2) 100%); background-size: 200% 100%; border-radius: 6px; margin: 10px 0; animation: shimmer 1.4s infinite; }
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+  /* subtle scrollbar */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--bg-3); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* small screens */
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    .side { display:none; }
+    .main { padding: 28px 20px 60px; }
+    .metrics { grid-template-columns: 1fr; }
+  }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const { useState, useEffect, useRef, useMemo } = React;
+
+  // The A-mark rebuilt as SVG from the PDF logo (approximate — user should
+  // replace with the real vector asset).
+  function ArcanaMark({ size = 32 }) {
+    return (
+      <svg className="brand-svg" width={size} height={size} viewBox="0 0 48 48" fill="none">
+        <defs>
+          <linearGradient id="amark" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#7FFFDF"/>
+            <stop offset="60%" stopColor="#00BFA5"/>
+            <stop offset="100%" stopColor="#005248"/>
+          </linearGradient>
+        </defs>
+        <path d="M24 4 L42 40 Q42 44 38 44 L30 44 L24 36 L18 44 L10 44 Q6 44 6 40 Z"
+              fill="url(#amark)"/>
+        <path d="M24 16 L28 24 L24 28 L20 24 Z M24 16 L24 28 M20 24 L28 24"
+              fill="#fff" stroke="#fff" strokeWidth="3" strokeLinejoin="round"/>
+      </svg>
+    );
+  }
+
+  function ModeToggle({ mode, onChange }) {
+    return (
+      <div className="mode-toggle" role="tablist">
+        <button
+          className={mode === "dark" ? "active" : ""}
+          onClick={() => onChange("dark")}
+        >
+          <span className="dot"/>Cósmico
+        </button>
+        <button
+          className={mode === "light" ? "active" : ""}
+          onClick={() => onChange("light")}
+        >
+          <span className="dot"/>Estelar
+        </button>
+      </div>
+    );
+  }
+
+  function Icon({ d }) {
+    return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">{d}</svg>;
+  }
+  // Lucide-style paths — just the glyphs we need, inlined so we don't depend on CDN.
+  const ICONS = {
+    home:     <><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-4v-7h-6v7H5a2 2 0 0 1-2-2z"/></>,
+    search:   <><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></>,
+    library:  <><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></>,
+    pin:      <><path d="M12 17v5M9 2h6l-1 6 4 4-2 3H8l-2-3 4-4z"/></>,
+    plus:     <><path d="M12 5v14M5 12h14"/></>,
+    layers:   <><path d="m12 2 10 6-10 6-10-6z"/><path d="m2 17 10 6 10-6"/><path d="m2 12 10 6 10-6"/></>,
+    arrowUp:  <><path d="M7 17 17 7M7 7h10v10"/></>,
+    github:   <><path d="M9 19c-4 1.5-4-2-6-2m12 5v-3.5a3 3 0 0 0-.8-2.2c2.6-.3 5.3-1.3 5.3-5.8a4.5 4.5 0 0 0-1.3-3.1 4.2 4.2 0 0 0-.1-3.1s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6 2 4.9 2.3 4.9 2.3a4.2 4.2 0 0 0-.1 3.1A4.5 4.5 0 0 0 3.5 8.5c0 4.5 2.7 5.5 5.3 5.8a3 3 0 0 0-.8 2.2V20"/></>,
+    file:     <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></>,
+    folder:   <><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9l-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Z"/></>,
+    book:     <><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></>,
+    slack:    <><path d="M14 2a2 2 0 0 0-2 2v6a2 2 0 1 0 4 0V4a2 2 0 0 0-2-2zM4 10a2 2 0 0 0 0 4h6a2 2 0 1 0 0-4H4zM20 10a2 2 0 0 0-2 2v0a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v0a2 2 0 0 0-2-2h0zM10 20a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v0a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v0z"/></>,
+    settings: <><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></>,
+  };
+
+  // ========== Fake "ask" response ==========
+  const SUGGESTIONS = [
+    { q: "¿Qué PRDs mencionan modo offline?", icon: "file" },
+    { q: "Resume las decisiones de arquitectura de esta semana", icon: "layers" },
+    { q: "Política de privacidad de datos", icon: "book" },
+    { q: "Citas del diseño de la UI cósmica", icon: "pin" },
+  ];
+
+  const ANSWER = {
+    title: "Arcana opera en modo completamente air-gapped cuando se desactiva la conexión.",
+    body: [
+      "En modo offline, el modelo se ejecutan localmente sin ninguna llamada saliente. El índice vectorial vive en CITE1 y todas las citas se calculan contra chunks locales.",
+      "El toggle de modo CITE2 fuerza una verificación de política: si una fuente requiere LLM cloud (por ejemplo CITE3), aparece deshabilitada hasta que se reactive la conexión.",
+      "Para cambiar entre modos sin perder contexto, Arcana mantiene dos índices paralelos y reconcilia diferencias al reconectar.",
+    ],
+    sources: [
+      { id: 1, title: "prd-offline-mode.md · §3.2 Local index", meta: "docs/arcana · 47 chunks · hace 2 días" },
+      { id: 2, title: "CONTEXT.md · Dual-mode architecture", meta: "repo root · 12 chunks · hace 4 días" },
+      { id: 3, title: "policy.yaml · cloud_sources[]", meta: "config · 8 entries · hace 1 hora" },
+    ],
+  };
+
+  function renderWithCitations(text) {
+    const parts = text.split(/CITE(\d+)/g);
+    return parts.map((p, i) => {
+      if (i % 2 === 1) {
+        return <span key={i} className="citation">[{p}]</span>;
+      }
+      return <React.Fragment key={i}>{p}</React.Fragment>;
+    });
+  }
+
+  function App() {
+    const [mode, setMode] = useState(() => localStorage.getItem("arcana.mode") || "dark");
+    const [query, setQuery] = useState("");
+    const [focused, setFocused] = useState(false);
+    const [state, setState] = useState("idle"); // idle | streaming | answered
+    const [streamedChars, setStreamedChars] = useState(0);
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+      document.documentElement.setAttribute("data-mode", mode);
+      localStorage.setItem("arcana.mode", mode);
+    }, [mode]);
+
+    // Fake streaming
+    useEffect(() => {
+      if (state !== "streaming") return;
+      const total = ANSWER.body.join(" ").length;
+      let cancelled = false;
+      let n = 0;
+      (function step() {
+        if (cancelled) return;
+        n += 18;
+        setStreamedChars(n);
+        if (n < total) setTimeout(step, 18);
+        else setState("answered");
+      })();
+      return () => { cancelled = true; };
+    }, [state]);
+
+    function ask(q) {
+      const use = (q ?? query).trim();
+      if (!use) return;
+      setQuery(use);
+      setState("streaming");
+      setStreamedChars(0);
+    }
+
+    function reset() {
+      setQuery("");
+      setState("idle");
+      setStreamedChars(0);
+      inputRef.current?.focus();
+    }
+
+    const showAnswer = state === "streaming" || state === "answered";
+
+    // Compute partially streamed body
+    const streamed = useMemo(() => {
+      if (state === "idle") return [];
+      const joined = ANSWER.body.join("\u0007"); // separator
+      const sliced = joined.slice(0, streamedChars);
+      return sliced.split("\u0007");
+    }, [state, streamedChars]);
+
+    return (
+      <div className="app">
+        {/* === Top bar === */}
+        <div className="topbar">
+          <div className="topbar-left">
+            <div className="brand">
+              <ArcanaMark/>
+              <div className="brand-word">arcana</div>
+            </div>
+          </div>
+          <div className="topbar-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            Buscar en todas las fuentes…
+            <span className="kbd">⌘K</span>
+          </div>
+          <div className="topbar-right">
+            <ModeToggle mode={mode} onChange={setMode}/>
+            <div className="avatar">MG</div>
+          </div>
+        </div>
+
+        {/* === Sidebar === */}
+        <aside className="side">
+          <div className="side-section">Espacio</div>
+          <div className="side-item active">
+            <Icon d={ICONS.home}/> Inicio
+            <span className="count">147</span>
+          </div>
+          <div className="side-item">
+            <Icon d={ICONS.library}/> Biblioteca
+            <span className="count">2.3k</span>
+          </div>
+          <div className="side-item">
+            <Icon d={ICONS.pin}/> Fijados
+            <span className="count">12</span>
+          </div>
+          <div className="side-item">
+            <Icon d={ICONS.layers}/> Colecciones
+          </div>
+
+          <div className="side-section">Fuentes</div>
+          <div className="side-source"><span className="src-dot"/>Repo local <span style={{marginLeft:"auto",fontFamily:"var(--font-mono)",fontSize:"11px",color:"var(--fg-3)"}}>47</span></div>
+          <div className="side-source"><span className="src-dot"/>Obsidian Vault <span style={{marginLeft:"auto",fontFamily:"var(--font-mono)",fontSize:"11px",color:"var(--fg-3)"}}>1.2k</span></div>
+          <div className="side-source"><span className="src-dot idle"/>GitHub (online) <span style={{marginLeft:"auto",fontFamily:"var(--font-mono)",fontSize:"11px",color:"var(--fg-3)"}}>paused</span></div>
+          <div className="side-source"><span className="src-dot off"/>Slack <span style={{marginLeft:"auto",fontFamily:"var(--font-mono)",fontSize:"11px",color:"var(--fg-3)"}}>offline</span></div>
+          <div className="side-item" style={{marginTop: 8}}>
+            <Icon d={ICONS.plus}/> Añadir fuente
+          </div>
+
+          <div className="side-section">Estado</div>
+          <div className="side-source" style={{fontSize:"12px"}}>
+            <span className="src-dot"/>
+            <div>
+              <div style={{color:"var(--fg-1)",fontWeight:600}}>Indexación completa</div>
+              <div style={{color:"var(--fg-3)",fontSize:"11px",marginTop:2,fontFamily:"var(--font-mono)"}}>147 · 12MB · 4m atrás</div>
+            </div>
+          </div>
+        </aside>
+
+        {/* === Main === */}
+        <main className="main">
+          {!showAnswer && (
+            <>
+              <div className="hero">
+                <div className="hero-eyebrow">{mode === "dark" ? "Profundidad Cósmica" : "Atmósfera Estelar"}</div>
+                <h1>El futuro está bellamente diseñado.</h1>
+                <p className="hero-sub">
+                  Todo gran descubrimiento comienza con una pregunta. Arcana te da las herramientas para encontrar respuestas — con citas rastreables, localmente en tu máquina.
+                </p>
+              </div>
+
+              <div className={"query-wrap" + (focused ? " focused" : "")}>
+                <div className={"query" + (focused ? " focused" : "")}>
+                  <svg className="star" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z"/>
+                  </svg>
+                  <input
+                    ref={inputRef}
+                    placeholder="Pregunta a Arcana cualquier cosa…"
+                    value={query}
+                    onFocus={() => setFocused(true)}
+                    onBlur={() => setFocused(false)}
+                    onChange={e => setQuery(e.target.value)}
+                    onKeyDown={e => { if (e.key === "Enter") ask(); }}
+                  />
+                  <button className="ask-btn" onClick={() => ask()} disabled={state==="streaming"}>
+                    {state === "streaming" ? "…" : "Ask"}
+                  </button>
+                </div>
+              </div>
+
+              <div className="chips">
+                {SUGGESTIONS.map(s => (
+                  <div key={s.q} className="chip" onClick={() => ask(s.q)}>
+                    <Icon d={ICONS[s.icon]}/> {s.q}
+                  </div>
+                ))}
+              </div>
+
+              <div className="metrics">
+                <div className="metric">
+                  <div className="metric-label">Fuentes indexadas</div>
+                  <div className="metric-val">147</div>
+                  <div className="metric-delta up">↗ +12 esta semana</div>
+                </div>
+                <div className="metric">
+                  <div className="metric-label">Consultas resueltas</div>
+                  <div className="metric-val">12,847</div>
+                  <div className="metric-delta up">↗ +14% este ciclo</div>
+                </div>
+                <div className="metric">
+                  <div className="metric-label">Modo activo</div>
+                  <div className="metric-val">{mode === "dark" ? "Air-gapped" : "Híbrido"}</div>
+                  <div className="metric-delta">{mode === "dark" ? "0 llamadas salientes" : "Cloud + local"}</div>
+                </div>
+              </div>
+            </>
+          )}
+
+          {showAnswer && (
+            <div className={"answer-wrap" + (showAnswer ? " visible" : "")}>
+              {/* Echo the query */}
+              <div className={"query-wrap" + (focused ? " focused" : "")} style={{marginBottom: 28}}>
+                <div className={"query" + (focused ? " focused" : "")}>
+                  <svg className="star" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z"/>
+                  </svg>
+                  <input
+                    ref={inputRef}
+                    value={query}
+                    onFocus={() => setFocused(true)}
+                    onBlur={() => setFocused(false)}
+                    onChange={e => setQuery(e.target.value)}
+                    onKeyDown={e => { if (e.key === "Enter") { reset(); setTimeout(() => ask(), 10); } }}
+                  />
+                  <button className="ask-btn" onClick={reset}>Nueva</button>
+                </div>
+              </div>
+
+              <div className="answer-card">
+                <div className="answer-meta">
+                  <span className="pulse"/>
+                  {state === "streaming" ? "Sintetizando respuesta" : "Respuesta sintetizada"}
+                  <span className="dot"/>
+                  {mode === "dark" ? "Local · air-gapped" : "Local + cloud"}
+                  <span className="dot"/>
+                  {ANSWER.sources.length} fuentes
+                </div>
+                <h2>{ANSWER.title}</h2>
+                {streamed.map((para, i) => (
+                  <p key={i}>{renderWithCitations(para)}{state === "streaming" && i === streamed.length-1 && <span style={{color:"var(--accent)"}}>▊</span>}</p>
+                ))}
+                {state === "answered" && (
+                  <div className="sources">
+                    <div className="sources-label">Fuentes citadas</div>
+                    {ANSWER.sources.map(s => (
+                      <div key={s.id} className="source-row">
+                        <div className="sid">{s.id}</div>
+                        <div className="stitle">{s.title}</div>
+                        <div className="smeta">{s.meta}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </main>
+      </div>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>

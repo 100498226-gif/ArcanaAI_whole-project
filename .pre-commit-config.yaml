@@ -1,0 +1,31 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+        args: [--line-length=100]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      - id: ruff
+        args: [--fix]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.13.0
+    hooks:
+      - id: mypy
+        args: [--config-file=backend/pyproject.toml]
+        additional_dependencies:
+          - pydantic>=2.0
+          - sqlalchemy>=2.0
+          - pydantic-settings>=2.0
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: bash -c 'cd backend && pytest tests/ -v --tb=short'
+        language: system
+        pass_filenames: false
+        always_run: true
