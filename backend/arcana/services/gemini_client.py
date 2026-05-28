@@ -54,7 +54,9 @@ def _build_prompt_text(pkg: "PromptPackage") -> str:
     parts += [
         pkg.source_context,
         f"<user_question>{pkg.question}</user_question>",
-        "Cite sources inline as [SOURCE N] only for claims directly supported by a source you used. Include a REFERENCES section only if you actually cited sources — omit it entirely if none were relevant.",
+        "If the sources above contain enough information to answer the question, answer directly and concisely. "
+        "Do NOT include any [SOURCE N] citations, reference numbers, or a REFERENCES section.\n"
+        "If the sources do NOT contain relevant information to answer the question, respond with exactly one word: OUTOFSCOPE",
     ]
     return "\n\n".join(parts)
 

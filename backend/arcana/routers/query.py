@@ -21,6 +21,8 @@ class HistoryMessage(BaseModel):
 class QueryRequest(BaseModel):
     question: str = Field(..., min_length=1, max_length=2000)
     history: Optional[List[HistoryMessage]] = Field(default_factory=list)
+    model: Optional[str] = Field(default="Gemini 2.5 Flash-Lite")
+    conversation_id: Optional[int] = Field(default=None)
 
 
 @router.post("/")
@@ -29,7 +31,12 @@ async def query_endpoint(body: QueryRequest) -> EventSourceResponse:
     history = [{"role": m.role, "content": m.content} for m in (body.history or [])]
 
     async def event_generator():
-        async for event in run_query_stream(body.question.strip(), history=history):
+        async for event in run_query_stream(
+            body.question.strip(),
+            history=history,
+            model=body.model or "Gemini 2.5 Flash-Lite",
+            conversation_id=body.conversation_id,
+        ):
             yield {"event": event["event"], "data": json.dumps(event["data"])}
 
     return EventSourceResponse(event_generator())

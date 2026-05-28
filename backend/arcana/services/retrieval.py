@@ -1,14 +1,7 @@
 """
 Vector search: embed query → search ChromaDB collections → return ranked chunks.
 
-Two public entry points:
-  vector_search(question)         — online path (Gemini embeddings, 3072-dim)
-  vector_search_offline(question) — offline path (BGE embeddings, 768-dim)
-
-Each path uses its own pair of ChromaDB collections so the two embedding
-spaces are never mixed:
-  Online  → code_chunks      / doc_chunks        (Gemini, 3072-dim)
-  Offline → code_chunks_local / doc_chunks_local  (BGE,    768-dim)
+Uses Gemini embeddings (3072-dim) against the online collections.
 """
 from __future__ import annotations
 
@@ -17,12 +10,7 @@ from dataclasses import dataclass, field
 import structlog
 
 from arcana.config import settings
-from arcana.vector_store import (
-    get_code_collection,
-    get_code_collection_local,
-    get_doc_collection,
-    get_doc_collection_local,
-)
+from arcana.vector_store import get_code_collection, get_doc_collection
 
 log = structlog.get_logger()
 
@@ -67,20 +55,22 @@ def _parse_collection_resp(
         )
 
 
-def _run_search(
-    collections: list,
-    embedding: list[float],
-    top_k: int,
-    label: str,
+async def vector_search(
+    question: str,
+    top_k: int | None = None,
 ) -> list[RetrievedChunk]:
-    """Query a list of ChromaDB collections, sort, threshold, and return top-k."""
-    chunks: list[RetrievedChunk] = []
+    """Embed with Gemini, search online collections (3072-dim)."""
+    from arcana.services.embedder import embed_query
 
-    for collection in collections:
+    k = top_k if top_k is not None else settings.retrieval_top_k
+    embedding = await embed_query(question)
+
+    chunks: list[RetrievedChunk] = []
+    for collection in [get_code_collection(), get_doc_collection()]:
         try:
             resp = collection.query(
                 query_embeddings=[embedding],
-                n_results=top_k,
+                n_results=k,
                 include=["documents", "metadatas", "distances"],
             )
         except Exception as exc:
@@ -90,35 +80,5 @@ def _run_search(
 
     chunks.sort(key=lambda c: c.score, reverse=True)
     chunks = [c for c in chunks if c.score >= settings.score_threshold]
-    log.info(f"retrieval.{label}", hits=len(chunks))
-    return chunks[:top_k]
-
-
-async def vector_search(
-    question: str,
-    top_k: int | None = None,
-) -> list[RetrievedChunk]:
-    """Online path: embed with Gemini, search Gemini collections (3072-dim)."""
-    from arcana.services.embedder import embed_query
-
-    k = top_k if top_k is not None else settings.retrieval_top_k
-    embedding = await embed_query(question)
-    return _run_search(
-        [get_code_collection(), get_doc_collection()],
-        embedding, k, "vector_search",
-    )
-
-
-async def vector_search_offline(
-    question: str,
-    top_k: int | None = None,
-) -> list[RetrievedChunk]:
-    """Offline path: embed with BGE, search local BGE collections (768-dim)."""
-    from arcana.services.local_embedder import embed_query_local
-
-    k = top_k if top_k is not None else settings.retrieval_top_k
-    embedding = await embed_query_local(question)
-    return _run_search(
-        [get_code_collection_local(), get_doc_collection_local()],
-        embedding, k, "vector_search_offline",
-    )
+    log.info("retrieval.vector_search", hits=len(chunks))
+    return chunks[:k]

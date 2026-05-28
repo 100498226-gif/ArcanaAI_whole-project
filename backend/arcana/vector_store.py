@@ -46,22 +46,6 @@ def get_doc_collection() -> chromadb.Collection:
     )
 
 
-def get_code_collection_local() -> chromadb.Collection:
-    """Embedded code — BGE local embeddings (offline mode, 768-dim)."""
-    return get_client().get_or_create_collection(
-        name="code_chunks_local",
-        metadata={"hnsw:space": "cosine"},
-    )
-
-
-def get_doc_collection_local() -> chromadb.Collection:
-    """Documentation sections — BGE local embeddings (offline mode, 768-dim)."""
-    return get_client().get_or_create_collection(
-        name="doc_chunks_local",
-        metadata={"hnsw:space": "cosine"},
-    )
-
-
 def get_cache_collection() -> chromadb.Collection:
     """Semantic query cache — stores query embeddings + full responses."""
     return get_client().get_or_create_collection(
