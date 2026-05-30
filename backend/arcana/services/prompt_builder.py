@@ -14,9 +14,10 @@ source materials from the user's knowledge base.
 
 Rules:
 1. Base your answer exclusively on the provided sources. If they don't contain
-   enough information, say so — never fabricate.
+   enough information, say so. Never fabricate.
 2. Include file names when referencing specific documents.
 3. Use code blocks with language annotations for code snippets.
+4. Never use em-dashes in your answers. Use commas, periods, parentheses, or colons instead.
 
 Output format:
 - Answer directly and concisely.
