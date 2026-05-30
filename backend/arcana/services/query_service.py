@@ -72,6 +72,33 @@ def _is_identity_question(question: str) -> bool:
     return any(q == p or q.startswith(p) for p in _IDENTITY_PATTERNS)
 
 
+# ── Casual / conversational message detection ──────────────────────────────────
+_GREETING_PATTERNS = (
+    "hey", "hi", "hello", "hola", "howdy", "greetings", "sup", "yo",
+    "good morning", "good afternoon", "good evening", "good night",
+)
+_THANKS_PATTERNS = (
+    "thanks", "thank you", "thank you so much", "thx", "ty", "cheers",
+    "great", "perfect", "awesome", "nice", "cool", "excellent", "brilliant",
+    "good", "ok", "okay", "got it", "understood", "sounds good", "alright",
+)
+_GOODBYE_PATTERNS = (
+    "bye", "goodbye", "see you", "cya", "later", "farewell",
+)
+
+def _casual_response(question: str) -> str | None:
+    """Return a short friendly reply for greetings, thanks, or farewells.
+    Returns None if the message should go through the normal pipeline."""
+    q = question.lower().strip().rstrip("!.,?").strip()
+    if any(q == p or q.startswith(p + " ") for p in _GREETING_PATTERNS):
+        return "Hi! Ready when you are — ask me anything about your documents."
+    if any(q == p or q.startswith(p) for p in _THANKS_PATTERNS):
+        return "Happy to help! Let me know if you have any other questions about your documents."
+    if any(q == p or q.startswith(p) for p in _GOODBYE_PATTERNS):
+        return "Goodbye! Come back whenever you need to search your documents."
+    return None
+
+
 def _extract_sources(chunks: list[RetrievedChunk]) -> list[dict]:
     """Deduplicate and format source attributions from retrieved chunks."""
     seen: set[str] = set()
@@ -161,6 +188,14 @@ async def run_query_stream(
     if _is_identity_question(question):
         log.info("query_service.identity_response")
         yield {"event": "chunk", "data": {"text": _IDENTITY_RESPONSE}}
+        yield {"event": "done", "data": {"chunks_used": 0, "sources": [], "conversation_id": None}}
+        return
+
+    # Casual / conversational shortcut — greetings, thanks, farewells
+    casual = _casual_response(question)
+    if casual is not None:
+        log.info("query_service.casual_response")
+        yield {"event": "chunk", "data": {"text": casual}}
         yield {"event": "done", "data": {"chunks_used": 0, "sources": [], "conversation_id": None}}
         return
 
