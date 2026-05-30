@@ -3,7 +3,7 @@ To: alex.montoya@montoyaconsulting.com
 Date: Wednesday, January 15, 2025 09:14
 Subject: Your order is on its way — Tracking ES123456789ES
 
-Hello Alex Montoya,
+Hello Ignacio Chillón,
 
 Your order is on its way! Here are the details:
 
@@ -21,7 +21,7 @@ Current status (as of January 15, 09:00):
 - January 15, 04:15 — Parcel in transit to Barcelona
 - January 15, 08:55 — Parcel arrived at Barcelona distribution centre (Zona Franca)
 
-Delivery address: Carrer de Vallcarca 38, 3r 2a, 08023 Barcelona
+Delivery address: Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa
 
 IMPORTANT: You must be present to sign for this delivery. If you are not available:
 - A delivery attempt card will be left

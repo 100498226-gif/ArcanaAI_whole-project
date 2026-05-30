@@ -4,7 +4,7 @@
 
 - **Policy number:** SAN-2847301
 - **Product:** Sanitas Más Salud — Individual Cover
-- **Policyholder:** Alex Montoya Ferrer — DNI 38.847.201-L
+- **Policyholder:** Ignacio Chillón Domínguez — DNI 38.847.201-L
 - **Policy start date:** January 1, 2023
 - **Policy expiry date:** December 31, 2025
 - **Premium:** €128.50 / month (€1,542.00 / year)

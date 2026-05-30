@@ -2,7 +2,7 @@
 
 **Client:** [Confidential — referred to as "Client X"]  
 **Project codename:** Project X  
-**Prepared by:** Alex Montoya (Montoya Consulting)  
+**Prepared by:** Ignacio Chillón (Chillón Consulting)  
 **Document date:** November 5, 2024  
 **Status:** Agreed — signed November 12, 2024
 
@@ -59,7 +59,7 @@ Expected delivery: **April 30, 2025**.
 
 The following are explicitly excluded from the fixed price:
 
-1. Infrastructure hosting costs (Client X's responsibility; Montoya Consulting will advise)
+1. Infrastructure hosting costs (Client X's responsibility; Chillón Consulting will advise)
 2. Third-party licences or API costs
 3. More than 2 rounds of design revisions per component
 4. Training sessions beyond the included 4-hour handover session
@@ -69,7 +69,7 @@ The following are explicitly excluded from the fixed price:
 
 ## Warranty
 
-A **30-day warranty** applies after final acceptance. During this period, Montoya Consulting will fix any defects at no additional charge, excluding defects caused by:
+A **30-day warranty** applies after final acceptance. During this period, Chillón Consulting will fix any defects at no additional charge, excluding defects caused by:
 - Client-side changes to data sources or infrastructure
 - Third-party service outages
 - Features explicitly marked as out of scope
@@ -80,7 +80,7 @@ A **30-day warranty** applies after final acceptance. During this period, Montoy
 
 Bank transfer to:  
 **IBAN:** ES7921003765082710094201  
-**Account name:** Alex Montoya Ferrer (Montoya Consulting)  
+**Account name:** Ignacio Chillón Domínguez (Chillón Consulting)  
 **Reference:** PROJECT-X + invoice number
 
 ---
@@ -99,4 +99,4 @@ This agreement is governed by Spanish law. Disputes resolved in the courts of Ba
 
 *Agreed and signed: November 12, 2024*  
 *Client X representative: [signature on file]*  
-*Montoya Consulting: Alex Montoya Ferrer*
+*Chillón Consulting: Ignacio Chillón Domínguez*

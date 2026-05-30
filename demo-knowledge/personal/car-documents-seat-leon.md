@@ -17,8 +17,8 @@
 
 ## Registration Certificate (Permiso de Circulación)
 
-- **Owner:** Alex Montoya Ferrer — DNI 38.847.201-L
-- **Address:** Carrer de Vallcarca 38, 3r 2a, 08023 Barcelona
+- **Owner:** Ignacio Chillón Domínguez — DNI 38.847.201-L
+- **Address:** Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa
 - **Registration date:** February 18, 2021
 - **Certificate number:** M-2021-BCN-4521KLM
 - **DGT section:** Jefatura Provincial de Tráfico de Barcelona
@@ -77,7 +77,7 @@
 
 ## Parking and Storage
 
-- **Regular parking:** Underground parking, Carrer de Vallcarca 40 (monthly contract)
+- **Regular parking:** Underground parking, Pablo Gorosabel Kalea 18 (across the street from home) (monthly contract)
 - **Parking contract reference:** VAL-PKG-2021-038
 - **Monthly fee:** €89.00
 

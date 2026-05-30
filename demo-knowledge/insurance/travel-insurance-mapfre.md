@@ -4,7 +4,7 @@
 
 - **Policy number:** MAP-VIAJE-2024-391047
 - **Product:** MAPFRE Viaje Mundo — Annual Multi-trip
-- **Policyholder:** Alex Montoya Ferrer — DNI 38.847.201-L
+- **Policyholder:** Ignacio Chillón Domínguez — DNI 38.847.201-L
 - **Coverage area:** Worldwide (including USA/Canada with medical supplement)
 - **Policy period:** March 1, 2024 – February 28, 2025
 - **Maximum trip duration per journey:** 45 days

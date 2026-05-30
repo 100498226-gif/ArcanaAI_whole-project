@@ -17,9 +17,9 @@ Contact: Joan Puigdomènech — joan.p@grafiquesnord.cat — +34 93 352 7700
 
 ## Client
 
-**Alex Montoya Ferrer** (Montoya Consulting)  
+**Ignacio Chillón Domínguez** (Chillón Consulting)  
 DNI: 38.847.201-L  
-Address: Carrer de Vallcarca 38, 3r 2a, 08023 Barcelona
+Address: Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa
 
 ---
 

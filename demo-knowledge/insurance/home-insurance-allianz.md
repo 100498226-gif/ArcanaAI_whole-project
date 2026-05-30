@@ -4,8 +4,8 @@
 
 - **Policy number:** ALZ-8820019
 - **Product:** Allianz Hogar Plus — Primary Residence
-- **Policyholder:** Alex Montoya Ferrer — DNI 38.847.201-L
-- **Insured property:** Carrer de Vallcarca 38, 3r 2a, 08023 Barcelona
+- **Policyholder:** Ignacio Chillón Domínguez — DNI 38.847.201-L
+- **Insured property:** Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa
 - **Property type:** Apartment, 65 m², 3rd floor, owner-occupier
 - **Policy start date:** April 22, 2021 (linked to mortgage origination)
 - **Policy renewal date:** April 22, 2025

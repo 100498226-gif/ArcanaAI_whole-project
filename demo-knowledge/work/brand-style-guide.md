@@ -1,20 +1,20 @@
-# Brand Style Guide — Montoya Consulting
+# Brand Style Guide — Chillón Consulting
 
 **Version:** 1.4  
 **Last updated:** October 2024  
-**Owner:** Alex Montoya
+**Owner:** Ignacio Chillón
 
 ---
 
 ## Brand Overview
 
-Montoya Consulting is a boutique technology and product consultancy based in Barcelona. Our brand conveys: **precision, clarity, and trustworthiness** — modern but not trendy; human but not casual.
+Chillón Consulting is a boutique technology and product consultancy based in Barcelona. Our brand conveys: **precision, clarity, and trustworthiness** — modern but not trendy; human but not casual.
 
 ---
 
 ## Logo
 
-- **Primary logo:** Wordmark "Montoya Consulting" in Montserrat ExtraBold
+- **Primary logo:** Wordmark "Chillón Consulting" in Montserrat ExtraBold
 - **Icon mark:** Stylised "M" monogram (for use on small surfaces: favicons, profile pictures)
 - **Clear space:** Minimum 20px clear space on all sides of the logo
 - **Minimum size:** 120px wide (digital); 30mm wide (print)
@@ -79,7 +79,7 @@ Montoya Consulting is a boutique technology and product consultancy based in Bar
 - **Professional but not corporate** — avoid jargon, write in plain English/Spanish
 - **Direct** — lead with the key point; don't bury the takeaway
 - **Specific** — use numbers and facts rather than vague superlatives
-- **First person** — "we" for the consultancy; "I" in personal communications from Alex
+- **First person** — "we" for the consultancy; "I" in personal communications from Ignacio
 
 ---
 
@@ -102,21 +102,21 @@ Montoya Consulting is a boutique technology and product consultancy based in Bar
 
 ## Email Signature
 
-All external emails from Alex Montoya must use this exact signature format:
+All external emails from Ignacio Chillón must use this exact signature format:
 
 ```
-Alex Montoya Ferrer
-Founder, Montoya Consulting
+Ignacio Chillón Domínguez
+Founder, Chillón Consulting
 +34 XXX XXX XXX
 montoyaconsulting.com
-[Montoya Consulting logo — linked to website]
+[Chillón Consulting logo — linked to website]
 ```
 
 **Rules:**
 - Use Calibri 10pt (or Arial 10pt if Calibri unavailable)
 - Logo must be embedded (not an attachment)
 - No motivational quotes, disclaimer boilerplate, or coloured text
-- Job title always "Founder, Montoya Consulting"
+- Job title always "Founder, Chillón Consulting"
 
 ---
 

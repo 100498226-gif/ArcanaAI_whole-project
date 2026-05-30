@@ -3,17 +3,17 @@
 **Meeting type:** Weekly team sync  
 **Date:** Tuesday, November 19, 2024  
 **Time:** 10:00–11:00  
-**Location:** Horizon Analytics office, Carrer de Provença 292, 2nd floor + Zoom (hybrid)  
-**Facilitator:** Alex Montoya  
+**Location:** InfiniteWatch office, Carrer de Provença 292, 2nd floor + Zoom (hybrid)  
+**Facilitator:** Ignacio Chillón  
 **Note-taker:** Sara Díaz
 
 ---
 
 ## Attendees
 
-- Alex Montoya (Montoya Consulting / project lead)
-- Miguel Fernández (Engineering Lead, Horizon Analytics)
-- Sara Díaz (Strategy & Pricing, Horizon Analytics)
+- Ignacio Chillón (Chillón Consulting / project lead)
+- Miguel Fernández (Engineering Lead, InfiniteWatch)
+- Sara Díaz (Strategy & Pricing, InfiniteWatch)
 - Laura Sánchez (People Ops) — joined remotely
 - David Kim — absent (on leave)
 
@@ -32,7 +32,7 @@
 ## 1. Sprint Review — Project X
 
 Miguel confirmed the backend API for Project X is 80% complete. Two integration blockers remain:
-- OAuth flow with Client X's identity provider — needs credentials from client (Alex to follow up)
+- OAuth flow with Client X's identity provider — needs credentials from client (Ignacio to follow up)
 - Data transformation pipeline hitting memory limits in dev — Miguel to investigate and fix by Thursday
 
 **Decision:** UAT delivery date of March 14 remains on track but is at risk if OAuth credentials not received by November 25.
@@ -41,7 +41,7 @@ Miguel confirmed the backend API for Project X is 80% complete. Two integration 
 
 ## 2. Client Y — Deliverable 1
 
-Alex reported Deliverable 1 (process audit) is on track for delivery on February 12. Draft shared internally for review — feedback requested by November 22.
+Ignacio reported Deliverable 1 (process audit) is on track for delivery on February 12. Draft shared internally for review — feedback requested by November 22.
 
 ---
 
@@ -53,7 +53,7 @@ Sara presented a revised pricing model for the SME tier. Key change: moving from
 
 ## 4. Upcoming Client Calls
 
-Miguel noted a call with a potential new client (referred by Carme Bosch from Client Y) on **Friday November 22** at 14:00. Alex to lead; Miguel to join for technical Q&A.
+Miguel noted a call with a potential new client (referred by Carme Bosch from Client Y) on **Friday November 22** at 14:00. Ignacio to lead; Miguel to join for technical Q&A.
 
 ---
 
@@ -67,12 +67,12 @@ Laura asked about the Christmas team dinner — poll to be shared in Slack this 
 
 | # | Action | Owner | Due Date |
 |---|---|---|---|
-| 1 | **Write API documentation for Project X** (authentication endpoints + data model) | **Alex** | **November 22, 2024** |
+| 1 | **Write API documentation for Project X** (authentication endpoints + data model) | **Ignacio** | **November 22, 2024** |
 | 2 | **Update and share revised pricing model** with team for review | **Sara** | November 22, 2024 |
 | 3 | **Lead client call on Friday** (potential new client referred by Carme Bosch) | **Miguel** | November 22, 2024 |
-| 4 | Follow up with Client X for OAuth credentials | Alex | November 20, 2024 |
+| 4 | Follow up with Client X for OAuth credentials | Ignacio | November 20, 2024 |
 | 5 | Investigate memory issue in data pipeline | Miguel | November 21, 2024 |
-| 6 | Send Deliverable 1 draft for internal review | Alex | November 20, 2024 |
+| 6 | Send Deliverable 1 draft for internal review | Ignacio | November 20, 2024 |
 | 7 | Share Christmas dinner poll | Laura | November 20, 2024 |
 
 ---

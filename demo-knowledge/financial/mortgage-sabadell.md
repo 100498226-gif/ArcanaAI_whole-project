@@ -4,13 +4,13 @@
 
 **Lender:** Banco Sabadell SA — CIF A-08000143  
 Branch: Carrer Gran de Gràcia 14, 08012 Barcelona  
-**Borrower:** Alex Montoya Ferrer — DNI 38.847.201-L  
+**Borrower:** Ignacio Chillón Domínguez — DNI 38.847.201-L  
 
 ---
 
 ## Property
 
-- **Address:** Carrer de Vallcarca 38, 3r 2a, 08023 Barcelona
+- **Address:** Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa
 - **Registry:** Registered in the Property Registry of Barcelona, Volume 3847, Book 241, Property No. 8812
 - **Appraisal value at origination:** €342,000
 

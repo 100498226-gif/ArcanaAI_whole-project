@@ -18,15 +18,15 @@ Autonomo / Instalador autorizado No.: ICT-2018-02847
 
 ## Client
 
-**Alex Montoya Ferrer**  
+**Ignacio Chillón Domínguez**  
 DNI: 38.847.201-L  
-Address: Carrer de Vallcarca 38, 3r 2a, 08023 Barcelona  
+Address: Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa  
 
 ---
 
 ## Description of Work
 
-**Location:** Carrer de Vallcarca 38, 3r 2a, 08023 Barcelona
+**Location:** Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa
 
 | Concept | Quantity | Unit Price | Total |
 |---|---|---|---|

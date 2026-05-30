@@ -1,10 +1,10 @@
-# Rental Contract — Apartment at Carrer de Vallcarca 38, 3r 2a, Barcelona
+# Rental Contract — Apartment at Pablo Gorosabel Kalea 12, 4º izda., Tolosa
 
 ## Parties
 
 **Landlord:** Jordi Mas Puigdomènech — DNI 47.291.834-K  
-**Tenant:** Alex Montoya Ferrer — DNI 38.847.201-L  
-**Property address:** Carrer de Vallcarca, 38, 3r 2a, 08023 Barcelona  
+**Tenant:** Ignacio Chillón Domínguez — DNI 38.847.201-L  
+**Property address:** Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa  
 
 ---
 
@@ -63,7 +63,7 @@ If the tenant leaves without notice, the security deposit is forfeited in additi
 
 ## Permitted Use
 
-The apartment is leased exclusively for residential use by Alex Montoya Ferrer and their immediate family. Commercial use, sublets, or Airbnb-type short-term rentals are strictly prohibited.
+The apartment is leased exclusively for residential use by Ignacio Chillón Domínguez and their immediate family. Commercial use, sublets, or Airbnb-type short-term rentals are strictly prohibited.
 
 ---
 
@@ -88,7 +88,7 @@ This contract is governed by the Spanish Urban Lease Law (Ley 29/1994 de Arrenda
 
 ## Signatures
 
-Signed in Barcelona on August 28, 2024.
+Signed in Tolosa on August 28, 2024.
 
 **Landlord:** Jordi Mas Puigdomènech  
-**Tenant:** Alex Montoya Ferrer
+**Tenant:** Ignacio Chillón Domínguez

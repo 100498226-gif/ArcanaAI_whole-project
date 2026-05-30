@@ -6,8 +6,8 @@
 Registered address: Passeig de Gràcia 44, 4t, 08007 Barcelona  
 Contact: Laura Pons Solà (Chief Product Officer) — laura.pons@clarabridge.es  
 
-**Receiving Party:** Alex Montoya Ferrer — DNI 38.847.201-L  
-Address: Carrer de Vallcarca 38, 3r 2a, 08023 Barcelona  
+**Receiving Party:** Ignacio Chillón Domínguez — DNI 38.847.201-L  
+Address: Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa  
 
 ---
 
@@ -85,4 +85,4 @@ This Agreement is governed by Spanish law. Any disputes shall be resolved by the
 Signed in Barcelona on January 15, 2025.
 
 **For Clarabridge Technologies SL:** Laura Pons Solà  
-**Receiving Party:** Alex Montoya Ferrer
+**Receiving Party:** Ignacio Chillón Domínguez

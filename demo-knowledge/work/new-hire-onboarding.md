@@ -1,4 +1,4 @@
-# New Hire Onboarding Guide — Horizon Analytics SL
+# New Hire Onboarding Guide — InfiniteWatch SL
 
 **Version:** 3.2  
 **Last updated:** September 2024  
@@ -9,7 +9,7 @@
 
 ## Overview
 
-This guide covers the 8-step onboarding process for new team members at Horizon Analytics. All steps must be completed within the first 2 weeks. The onboarding buddy assigned at offer acceptance is responsible for ensuring each step is completed on time.
+This guide covers the 8-step onboarding process for new team members at InfiniteWatch. All steps must be completed within the first 2 weeks. The onboarding buddy assigned at offer acceptance is responsible for ensuring each step is completed on time.
 
 ---
 

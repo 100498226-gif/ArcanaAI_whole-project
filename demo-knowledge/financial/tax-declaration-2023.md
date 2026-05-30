@@ -2,9 +2,9 @@
 
 ## Taxpayer Details
 
-- **Name:** Alex Montoya Ferrer
+- **Name:** Ignacio Chillón Domínguez
 - **DNI:** 38.847.201-L
-- **Tax residence:** Carrer de Vallcarca 38, 3r 2a, 08023 Barcelona
+- **Tax residence:** Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa
 - **Fiscal status:** Autónomo (self-employed) + employee income
 - **Tax year:** January 1 – December 31, 2023
 - **Declaration filed:** April 8, 2024
@@ -18,7 +18,7 @@
 
 | Source | Gross Amount |
 |---|---|
-| Horizon Analytics SL (salary Jan–Dec 2023) | €57,600.00 |
+| InfiniteWatch SL (salary Jan–Dec 2023) | €57,600.00 |
 | Retenciones (withholding at source, 19%) | −€10,944.00 |
 | **Net employment income** | **€46,656.00** |
 
@@ -26,7 +26,7 @@
 
 | Source | Amount |
 |---|---|
-| Consulting fees billed (Montoya Consulting) | €10,800.00 |
+| Consulting fees billed (Chillón Consulting) | €10,800.00 |
 | Quarterly VAT paid (IVA) — passed through | −€2,268.00 |
 | **Net self-employment income** | **€8,532.00** |
 

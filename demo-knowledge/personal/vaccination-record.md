@@ -1,8 +1,8 @@
-# Vaccination Record — Alex Montoya Ferrer
+# Vaccination Record — Ignacio Chillón Domínguez
 
 ## Personal Details
 
-- **Name:** Alex Montoya Ferrer
+- **Name:** Ignacio Chillón Domínguez
 - **DNI:** 38.847.201-L
 - **Date of birth:** March 14, 1996
 - **Blood type:** A+

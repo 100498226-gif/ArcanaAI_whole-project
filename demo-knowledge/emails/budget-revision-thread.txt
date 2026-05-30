@@ -22,7 +22,7 @@ I'd say we're 90% there. Let's not count it as signed until we have written conf
 
 Miguel — can you start the technical environment setup under the new scope? Just the foundation, don't commit to anything that would need reversing if it falls through.
 
-Alex — once CFO approves, you'll need to send the updated contract (Word format per Laura's request).
+Ignacio — once CFO approves, you'll need to send the updated contract (Word format per Laura's request).
 
 I'll ping you both as soon as we hear from Neus.
 
@@ -47,7 +47,7 @@ Payment terms: they've confirmed Net-30 (non-negotiable, company policy). We'll 
 
 Miguel — does the 15% scope reduction affect your timeline estimate? Let me know if we need to update the delivery schedule.
 
-Alex
+Ignacio
 
 ---
 

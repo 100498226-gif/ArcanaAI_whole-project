@@ -6,9 +6,9 @@
 Address: Polígon Industrial Zona Franca, Carrer B, Nave 14, 08040 Barcelona  
 Contact: Pere Font Olivé — pere.font@techprint.es — +34 93 441 2200  
 
-**Client:** Alex Montoya Ferrer (operating as Montoya Consulting)  
+**Client:** Ignacio Chillón Domínguez (operating as Chillón Consulting)  
 DNI: 38.847.201-L  
-Address: Carrer de Vallcarca 38, 3r 2a, 08023 Barcelona  
+Address: Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa  
 
 ---
 
@@ -30,7 +30,7 @@ This agreement covers the supply of **500 units of printed presentation folders*
 ## Delivery Terms
 
 - **Agreed delivery date:** March 15, 2025
-- **Delivery address:** Carrer de Vallcarca 38, 3r 2a, 08023 Barcelona (or alternative address notified at least 5 days in advance)
+- **Delivery address:** Pablo Gorosabel Kalea 12, 4º izda., 20400 Tolosa, Gipuzkoa (or alternative address notified at least 5 days in advance)
 - **Incoterms:** DDP (Delivered Duty Paid)
 
 ---
@@ -72,4 +72,4 @@ This agreement is governed by Spanish law.
 Signed in Barcelona on October 10, 2024.
 
 **For TechPrint Solutions SL:** Pere Font Olivé  
-**Client:** Alex Montoya Ferrer
+**Client:** Ignacio Chillón Domínguez

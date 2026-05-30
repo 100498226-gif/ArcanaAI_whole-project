@@ -1,4 +1,4 @@
-# Professional Certifications — Alex Montoya Ferrer
+# Professional Certifications — Ignacio Chillón Domínguez
 
 ## Active Certifications
 

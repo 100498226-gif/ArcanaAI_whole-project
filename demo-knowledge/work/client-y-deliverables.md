@@ -2,7 +2,7 @@
 
 **Client:** [Confidential — referred to as "Client Y"]  
 **Project:** Digital Transformation Phase 2  
-**Engagement manager:** Alex Montoya  
+**Engagement manager:** Ignacio Chillón  
 **Contract reference:** MC-2024-CY-002  
 **Last updated:** March 5, 2025
 
@@ -38,7 +38,7 @@
 **Status:** In progress  
 **Due:** March 10, 2025  
 **ETA:** March 10, 2025 (on track as of March 5)  
-**Owner:** Alex Montoya (lead) + technical review by Miguel Fernández (Horizon Analytics)
+**Owner:** Ignacio Chillón (lead) + technical review by Miguel Fernández (InfiniteWatch)
 
 **Progress:**
 - Vendor shortlist completed: 4 vendors evaluated (Salesforce, HubSpot, Zoho, custom build)
@@ -49,7 +49,7 @@
 **Outstanding items before delivery:**
 - Finalise security assessment (March 7 meeting)
 - Complete cost-benefit analysis
-- Internal review + sign-off (Alex → Miguel, 1 day review)
+- Internal review + sign-off (Ignacio → Miguel, 1 day review)
 - Client delivery: March 10
 
 ---
@@ -95,8 +95,8 @@
 
 | Action | Owner | Due |
 |---|---|---|
-| Security assessment meeting | Alex + Ricard Puig | March 7, 2025 |
-| Complete D2 cost-benefit analysis | Alex | March 8, 2025 |
+| Security assessment meeting | Ignacio + Ricard Puig | March 7, 2025 |
+| Complete D2 cost-benefit analysis | Ignacio | March 8, 2025 |
 | Internal review of D2 draft | Miguel F. | March 9, 2025 |
-| Deliver D2 to client | Alex | March 10, 2025 |
-| Begin D3 scoping (post D2 acceptance) | Alex | March 17, 2025 |
+| Deliver D2 to client | Ignacio | March 10, 2025 |
+| Begin D3 scoping (post D2 acceptance) | Ignacio | March 17, 2025 |

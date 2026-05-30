@@ -64,7 +64,7 @@
 
 ## Registered Owner
 
-- **Name:** Alex Montoya Ferrer
+- **Name:** Ignacio Chillón Domínguez
 - **Apple ID:** a.montoya@icloud.com
 - **Registration date:** March 7, 2024
 

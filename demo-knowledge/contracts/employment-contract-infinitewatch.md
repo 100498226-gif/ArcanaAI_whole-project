@@ -1,16 +1,16 @@
-# Employment Contract — Horizon Analytics SL
+# Employment Contract — InfiniteWatch SL
 
 ## Parties
 
-**Employer:** Horizon Analytics SL — CIF B-67234891  
+**Employer:** InfiniteWatch SL — CIF B-67234891  
 Registered address: Carrer de Pallars 193, 08005 Barcelona  
-**Employee:** Alex Montoya Ferrer — DNI 38.847.201-L  
+**Employee:** Ignacio Chillón Domínguez — DNI 38.847.201-L  
 
 ---
 
 ## Position and Start Date
 
-- **Job title:** Senior Product Consultant
+- **Job title:** Product Manager
 - **Department:** Client Solutions
 - **Start date:** February 1, 2024
 - **Contract type:** Indefinite (permanent)
@@ -48,7 +48,7 @@ Registered address: Carrer de Pallars 193, 08005 Barcelona
 
 ## Intellectual Property
 
-All work product, code, documentation, methodologies, and inventions created in the course of employment are the exclusive property of Horizon Analytics SL.
+All work product, code, documentation, methodologies, and inventions created in the course of employment are the exclusive property of InfiniteWatch SL.
 
 ---
 
@@ -61,8 +61,8 @@ The employee agrees to maintain strict confidentiality regarding all proprietary
 ## Non-Compete Clause
 
 For a period of **12 months** following the termination of employment, the employee may not:
-- Work for or provide services to any direct competitor of Horizon Analytics SL operating in the enterprise analytics or business intelligence software sector.
-- Solicit Horizon Analytics SL's clients or employees.
+- Work for or provide services to any direct competitor of InfiniteWatch SL operating in the enterprise analytics or business intelligence software sector.
+- Solicit InfiniteWatch SL's clients or employees.
 
 Compensation for this restriction: €3,000 lump sum paid upon departure, provided the termination is not for cause.
 
@@ -86,5 +86,5 @@ This contract is governed by Spanish labor law (Estatuto de los Trabajadores) an
 
 Signed in Barcelona on January 24, 2024.
 
-**For Horizon Analytics SL:** Marta Roca Vidal (HR Director)  
-**Employee:** Alex Montoya Ferrer
+**For InfiniteWatch SL:** Marta Roca Vidal (HR Director)  
+**Employee:** Ignacio Chillón Domínguez

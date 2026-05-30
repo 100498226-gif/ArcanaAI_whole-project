@@ -1,13 +1,13 @@
 # Refund Policy — Enterprise Plan
 
-**Montoya Consulting**  
+**Chillón Consulting**  
 Version: 2.1 — Effective from October 1, 2024
 
 ---
 
 ## Scope
 
-This policy applies to all Enterprise plan engagements and software licences sold by Montoya Consulting to corporate clients. It supersedes all prior versions.
+This policy applies to all Enterprise plan engagements and software licences sold by Chillón Consulting to corporate clients. It supersedes all prior versions.
 
 ---
 
