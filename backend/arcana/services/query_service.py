@@ -6,12 +6,13 @@ Always uses Gemini (online path). Persists conversations and messages to DB.
 SSE event shapes:
   {"event": "chunk",       "data": {"text": "..."}}
   {"event": "done",        "data": {"chunks_used": N, "sources": [...], "conversation_id": N}}
-  {"event": "out_of_scope","data": {"question": "...", "conversation_id": N}}
+  {"event": "out_of_scope","data": {"question": "...", "search_query": "...", "conversation_id": N}}
   {"event": "error",       "data": {"message": "..."}}
 """
 from __future__ import annotations
 
 import json
+import re
 from collections.abc import AsyncGenerator
 from datetime import datetime, timezone
 from pathlib import Path
@@ -46,6 +47,24 @@ _IDENTITY_PATTERNS = (
     "introduce yourself", "tell me about yourself", "what can you do",
     "what do you do", "help", "how do you work",
 )
+
+
+def _make_search_query(question: str) -> str:
+    """Strip personal language to produce a neutral, search-engine-friendly query."""
+    q = question.strip().rstrip('?').strip()
+    # Remove leading question phrases
+    q = re.sub(
+        r'^(what is|what are|what was|what were|how do i|how can i|how does|'
+        r'who is|who are|where is|when is|why is|tell me about|explain|describe)\s+',
+        '', q, flags=re.IGNORECASE,
+    )
+    # Remove possessives
+    q = re.sub(r'\b(my|our|your|their|his|her|its)\b\s*', '', q, flags=re.IGNORECASE)
+    # Remove personal pronouns
+    q = re.sub(r'\b(i|we|me|us|you)\b\s*', '', q, flags=re.IGNORECASE)
+    # Collapse extra whitespace
+    q = re.sub(r'\s+', ' ', q).strip()
+    return q if q else question.rstrip('?').strip()
 
 
 def _is_identity_question(question: str) -> bool:
@@ -162,7 +181,7 @@ async def run_query_stream(
         if not chunks:
             log.info("query_service.out_of_scope_no_chunks", question=question)
             await _mark_out_of_scope(db, conv_id)
-            yield {"event": "out_of_scope", "data": {"question": question, "conversation_id": conv_id}}
+            yield {"event": "out_of_scope", "data": {"question": question, "search_query": _make_search_query(question), "conversation_id": conv_id}}
             yield {"event": "done", "data": {"chunks_used": 0, "sources": [], "conversation_id": conv_id}}
             return
 
@@ -190,7 +209,7 @@ async def run_query_stream(
                             # LLM signalled it cannot answer from the sources
                             log.info("query_service.out_of_scope_llm_signal", question=question)
                             await _mark_out_of_scope(db, conv_id)
-                            yield {"event": "out_of_scope", "data": {"question": question, "conversation_id": conv_id}}
+                            yield {"event": "out_of_scope", "data": {"question": question, "search_query": _make_search_query(question), "conversation_id": conv_id}}
                             yield {"event": "done", "data": {"chunks_used": 0, "sources": [], "conversation_id": conv_id}}
                             return
                         else:
@@ -205,7 +224,7 @@ async def run_query_stream(
             if not signal_checked and buffer:
                 if buffer.strip().upper().startswith(_SIGNAL):
                     await _mark_out_of_scope(db, conv_id)
-                    yield {"event": "out_of_scope", "data": {"question": question, "conversation_id": conv_id}}
+                    yield {"event": "out_of_scope", "data": {"question": question, "search_query": _make_search_query(question), "conversation_id": conv_id}}
                     yield {"event": "done", "data": {"chunks_used": 0, "sources": [], "conversation_id": conv_id}}
                     return
                 full_response.append(buffer)
