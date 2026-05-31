@@ -81,13 +81,11 @@ def _is_identity_question(question: str) -> bool:
 # ── Creator / origin questions ─────────────────────────────────────────────────
 _CREATOR_RESPONSE = (
     "I was created by Ignacio Chillón Domínguez as the subject of his Bachelor's "
-    "Thesis, defended on May 31, 2026. Ignacio is a Product Manager at "
-    "InfiniteWatch (an AI startup, infinitewatch.ai) and holds a Bachelor's "
-    "Degree in Management and Technology, with a minor in Mathematics and "
-    "Computer Science, from Universidad Carlos III de Madrid, where he "
-    "graduated with a 3.9 / 4.0 GPA. He designed and built the entire Arcana "
-    "system from scratch, including the frontend, the backend RAG engine, and "
-    "the macOS desktop overlay."
+    "Thesis on May 31, 2026. Ignacio is about to graduate from Universidad Carlos "
+    "III de Madrid with a Bachelor's Degree in Management and Technology, along "
+    "with minors in Mathematics and Computer Science. He designed and built me "
+    "entirely from scratch, so we've become very good friends. In fact, I had "
+    "lunch with him just the other day!"
 )
 
 _CREATOR_PATTERNS = (
