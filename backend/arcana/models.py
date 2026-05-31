@@ -20,7 +20,7 @@ class Conversation(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     title: Mapped[str] = mapped_column(String(200), nullable=False)
-    model: Mapped[str] = mapped_column(String(100), nullable=False, default="Gemini 2.5 Flash-Lite")
+    model: Mapped[str] = mapped_column(String(100), nullable=False, default="Qwen 3")
     out_of_scope: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, default=_utcnow

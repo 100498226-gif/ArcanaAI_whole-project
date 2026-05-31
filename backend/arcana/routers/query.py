@@ -21,7 +21,7 @@ class HistoryMessage(BaseModel):
 class QueryRequest(BaseModel):
     question: str = Field(..., min_length=1, max_length=2000)
     history: Optional[List[HistoryMessage]] = Field(default_factory=list)
-    model: Optional[str] = Field(default="Gemini 2.5 Flash-Lite")
+    model: Optional[str] = Field(default="Qwen 3")
     conversation_id: Optional[int] = Field(default=None)
 
 
@@ -34,7 +34,7 @@ async def query_endpoint(body: QueryRequest) -> EventSourceResponse:
         async for event in run_query_stream(
             body.question.strip(),
             history=history,
-            model=body.model or "Gemini 2.5 Flash-Lite",
+            model=body.model or "Qwen 3",
             conversation_id=body.conversation_id,
         ):
             yield {"event": event["event"], "data": json.dumps(event["data"])}

@@ -339,7 +339,7 @@ async def _mark_out_of_scope(db, conversation_id: int) -> None:
 async def run_query_stream(
     question: str,
     history: list[dict] | None = None,
-    model: str = "Gemini 2.5 Flash-Lite",
+    model: str = "Qwen 3",
     conversation_id: int | None = None,
 ) -> AsyncGenerator[dict, None]:
     """
