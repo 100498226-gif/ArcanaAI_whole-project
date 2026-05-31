@@ -78,6 +78,36 @@ def _is_identity_question(question: str) -> bool:
     return any(q == p or q.startswith(p) for p in _IDENTITY_PATTERNS)
 
 
+# ── Creator / origin questions ─────────────────────────────────────────────────
+_CREATOR_RESPONSE = (
+    "I was created by Ignacio Chillón Domínguez as the subject of his Bachelor's "
+    "Thesis, defended on May 31, 2026. Ignacio is a Product Manager at "
+    "InfiniteWatch (an AI startup, infinitewatch.ai) and holds a Bachelor's "
+    "Degree in Management and Technology, with a minor in Mathematics and "
+    "Computer Science, from Universidad Carlos III de Madrid, where he "
+    "graduated with a 3.9 / 4.0 GPA. He designed and built the entire Arcana "
+    "system from scratch, including the frontend, the backend RAG engine, and "
+    "the macOS desktop overlay."
+)
+
+_CREATOR_PATTERNS = (
+    "who created you", "who made you", "who built you", "who developed you",
+    "who designed you", "who programmed you", "who is your creator",
+    "who is your author", "who is your developer", "who is your designer",
+    "who is your maker", "who is behind you", "who is your founder",
+    "who wrote you", "who coded you", "who is your dev",
+    "where do you come from", "what is your origin", "what's your origin",
+    "who owns you", "who built arcana", "who created arcana",
+    "who made arcana", "who developed arcana", "who designed arcana",
+    "who is arcana built by", "who is arcana made by",
+)
+
+
+def _is_creator_question(question: str) -> bool:
+    q = question.lower().strip().rstrip("!.,?").strip()
+    return any(q == p or q.startswith(p) for p in _CREATOR_PATTERNS)
+
+
 # ── Casual / conversational message detection ──────────────────────────────────
 _GREETING_PATTERNS = (
     "hey", "hi", "hello", "hola", "howdy", "greetings", "sup", "yo",
@@ -329,6 +359,18 @@ async def run_query_stream(
             async for ev in _stream_canned(_IDENTITY_RESPONSE):
                 yield ev
             await _save_message(db, conv_id, "assistant", _IDENTITY_RESPONSE)
+        yield {"event": "done", "data": {"chunks_used": 0, "sources": [], "conversation_id": conv_id}}
+        return
+
+    # ── Creator / origin shortcut (streamed + persisted) ──────────────────────
+    if _is_creator_question(question):
+        log.info("query_service.creator_response")
+        async with AsyncSessionLocal() as db:
+            conv_id, _ = await _get_or_create_conversation(db, conversation_id, question, model)
+            await _save_message(db, conv_id, "user", question)
+            async for ev in _stream_canned(_CREATOR_RESPONSE):
+                yield ev
+            await _save_message(db, conv_id, "assistant", _CREATOR_RESPONSE)
         yield {"event": "done", "data": {"chunks_used": 0, "sources": [], "conversation_id": conv_id}}
         return
 
