@@ -7,8 +7,8 @@ Three pieces must run at the same time:
 | Piece | What it does | Port |
 |-------|-------------|------|
 | **This repo — Backend** | AI engine, RAG pipeline, conversation database | `8000` |
-| **Arcanaaiuiuxdesign** | Browser chat interface | `5173` |
-| **Arcana_OverlayApp** | macOS desktop overlay + menu bar icon | — |
+| **Arcana_frontend** | Browser chat interface | `5173` |
+| **Arcana_overlay** | macOS desktop overlay + menu bar icon | — |
 
 ---
 
@@ -34,7 +34,7 @@ You only need to do this once. After this, starting Arcana every day takes three
 ### Step 2 — Configure the backend
 
 ```bash
-cd ArcanaAI_whole-project/backend
+cd Arcana_backend/backend
 cp .env.example .env
 ```
 
@@ -47,7 +47,7 @@ GEMINI_API_KEY=paste_your_key_here
 ### Step 3 — Start the backend
 
 ```bash
-cd ArcanaAI_whole-project/backend
+cd Arcana_backend/backend
 .venv/bin/python3.9 -m uvicorn arcana.main:app --reload --port 8000
 ```
 
@@ -60,7 +60,7 @@ Open a new terminal and run:
 ```bash
 curl -X POST http://localhost:8000/ingest/local \
   -H "Content-Type: application/json" \
-  -d '{"paths":["<absolute_path_to>/ArcanaAI_whole-project/demo-knowledge"]}'
+  -d '{"paths":["<absolute_path_to>/Arcana_backend/demo-knowledge"]}'
 ```
 
 Wait for a response like `{"embedded": 244, ...}`. This takes 30–60 seconds and only needs to be done once.
@@ -68,7 +68,7 @@ Wait for a response like `{"embedded": 244, ...}`. This takes 30–60 seconds an
 ### Step 5 — Start the frontend
 
 ```bash
-cd Arcanaaiuiuxdesign
+cd Arcana_frontend
 npm install    # first time only
 npm run dev
 ```
@@ -78,7 +78,7 @@ Wait until you see `Local: http://localhost:5173`.
 ### Step 6 — Start the overlay app
 
 ```bash
-cd Arcana_OverlayApp
+cd Arcana_overlay
 npm install    # first time only
 npm start
 ```
@@ -106,15 +106,15 @@ Three terminals, three commands:
 
 ```bash
 # Terminal 1 — Backend
-cd ArcanaAI_whole-project/backend
+cd Arcana_backend/backend
 .venv/bin/python3.9 -m uvicorn arcana.main:app --reload --port 8000
 
 # Terminal 2 — Frontend
-cd Arcanaaiuiuxdesign
+cd Arcana_frontend
 npm run dev
 
 # Terminal 3 — Overlay
-cd Arcana_OverlayApp
+cd Arcana_overlay
 npm start
 ```
 
